@@ -81,10 +81,27 @@ public class JobHandler {
 	 * @return
 	 */
 	public static boolean promotionQualify(boolean availability, boolean jobType, int jobRank, int eRank, int seniority) {
-		boolean qualify = false;
-		if(!availability){ return qualify;}
-		if(eRank <= 0) { return qualify;}
+boolean qualify = false;
 		
+		if(!availability)
+		{ 
+			return qualify;
+		}
+		if(eRank <= 0)
+		{ 
+			return qualify;
+		}
+		
+
+		if(seniority == 1)
+			eRank = eRank + 5;
+		else if(seniority == 2)
+			eRank = eRank + 10;
+		else if(seniority == 3)
+			eRank = eRank + 20;
+			
+		if(jobRank <= eRank || (!jobType))
+			return true;
 		//Add Code Here [You have to use Switch and If/Else to get graded]
 		
 		return qualify; 
